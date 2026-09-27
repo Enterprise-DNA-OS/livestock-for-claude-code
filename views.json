@@ -1,13 +1,58 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "Livestock for Claude Code: what needs attention, rendered by npm run view",
+    "title": "This week on the farm",
     "sections": [
       {
-        "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "title": "Decisions",
+        "sql": "select * from attention_board order by priority,kind,record"
+      },
+      {
+        "title": "Slaughter plans",
+        "sql": "select * from sale_readiness order by sale_date",
+        "columns": [
+          "name",
+          "mob",
+          "sale_date",
+          "head",
+          "market",
+          "decision"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "grazing",
+    "title": "Grazing round",
+    "sections": [
+      {
+        "title": "Paddocks",
+        "sql": "select * from grazing_board order by paddock",
+        "columns": [
+          "paddock",
+          "area_ha",
+          "head",
+          "dse_per_ha",
+          "feed_kg_dm",
+          "feed_age_days",
+          "rest_so_far",
+          "decision"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "performance",
+    "title": "Livestock performance",
+    "sections": [
+      {
+        "title": "Weights",
+        "sql": "select * from performance_board order by mob"
+      },
+      {
+        "title": "Recorded costs",
+        "sql": "select *,sales-purchases-treatments-feed recorded_cash_margin from cost_board",
+        "note": "Recorded cash movement only. Excludes closing livestock valuation, labour and other unrecorded costs."
       }
     ]
   }

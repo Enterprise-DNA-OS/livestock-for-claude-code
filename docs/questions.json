@@ -1,0 +1,42 @@
+[
+  [
+    "Which slaughter plans are blocked by treatment dates, missing history or paperwork?",
+    "sale-check"
+  ],
+  [
+    "Which mobs have unknown holding intervals even after someone reviewed their history?",
+    "withholding"
+  ],
+  [
+    "Where does the last muster disagree with the recorded head count?",
+    "attention"
+  ],
+  [
+    "Which empty paddocks have met their chosen rest period and have a recent feed estimate?",
+    "grazing"
+  ],
+  [
+    "Which mob has a measured daily gain, and how old is the evidence?",
+    "performance"
+  ],
+  [
+    "Which sale records still lack a recorded NLIS confirmation?",
+    "compliance"
+  ],
+  [
+    "What remains after recorded purchases, treatment and feed costs are taken off recorded sales?",
+    "costs"
+  ],
+  [
+    "Which joining groups have an overdue pregnancy scan?",
+    "breeding"
+  ],
+  [
+    "Which feed entries lack a supplier declaration reference?",
+    "compliance"
+  ],
+  [
+    "Which medicine stock has expired while overdue farm work is still open?",
+    "attention"
+  ]
+]

@@ -1,0 +1,1 @@
+export const TABLES = ["farms", "paddocks", "mobs", "animals", "stock_events", "movements", "counts", "products", "treatments", "weights", "feeds", "joinings", "sale_plans", "farm_tasks", "notes", "import_rows"];

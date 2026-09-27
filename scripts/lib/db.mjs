@@ -49,6 +49,8 @@ export async function getDb() {
 
   if (url) {
     const { default: pg } = await import('pg');
+    // Keep DATE values as calendar strings; local midnight can shift a day in UTC.
+    pg.types.setTypeParser(1082, (value) => value);
     const pool = new pg.Client({
       connectionString: url,
       ssl: wantsSsl(url) ? { rejectUnauthorized: true } : undefined,

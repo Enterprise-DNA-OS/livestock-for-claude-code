@@ -1,11 +1,96 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
+    "name": "treatment-register",
+    "title": "Livestock treatment working register",
+    "for_each": "select id,name from mobs",
     "file": "name",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Treatment records",
+        "sql": "select * from treatment_register where mob=(select name from mobs where id=$1)",
+        "note": "Label directions and veterinary advice govern actual treatment. Demonstration intervals are fictional.",
+        "columns": [
+          "mob",
+          "product",
+          "batch",
+          "treated_on",
+          "head",
+          "dose_ml",
+          "operator",
+          "whp_clear",
+          "esi_clear",
+          "label_ref"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "sale-worksheet",
+    "title": "Slaughter preparation worksheet",
+    "for_each": "select id,name from sale_plans",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Readiness",
+        "sql": "select * from sale_readiness where id=$1",
+        "note": "DRAFT WORKSHEET. Not an official NVD or NLIS submission. Owner must review records and complete official channels.",
+        "columns": [
+          "name",
+          "mob",
+          "sale_date",
+          "head",
+          "market",
+          "whp_clear",
+          "esi_clear",
+          "decision"
+        ]
+      },
+      {
+        "title": "Destination and declaration",
+        "sql": "select name,sale_date,head,market,destination_pic,nvd,status from sale_plans where id=$1"
+      }
+    ]
+  },
+  {
+    "name": "audit-pack",
+    "title": "Farm audit working pack",
+    "for_each": "select id,name from farms",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Property and reviews",
+        "sql": "select name,pic,state,biosecurity_review,risk_review from farms where id=$1"
+      },
+      {
+        "title": "Livestock",
+        "sql": "select s.* from mob_summary s join mobs m on m.id=s.id join paddocks p on p.id=m.paddock_id where p.farm_id=$1",
+        "columns": [
+          "name",
+          "species",
+          "paddock",
+          "head",
+          "history_verified",
+          "whp_clear",
+          "esi_clear",
+          "unknown_hold"
+        ]
+      },
+      {
+        "title": "Treatment register",
+        "sql": "select t.* from treatment_register t join treatments r on r.id=t.id join mobs m on m.id=r.mob_id join paddocks p on p.id=m.paddock_id where p.farm_id=$1",
+        "note": "A working record for the operator and auditor. It does not certify accreditation or replace source documents.",
+        "columns": [
+          "mob",
+          "product",
+          "batch",
+          "treated_on",
+          "head",
+          "operator",
+          "whp_clear",
+          "esi_clear",
+          "label_ref"
+        ]
+      }
     ]
   }
 ]

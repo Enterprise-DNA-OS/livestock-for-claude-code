@@ -1,24 +1,17 @@
 # Why there is no front end
 
-AgriWebb is a database with a subscription. The tables underneath it are ordinary: a few entities, a few relationships, a handful of workflows you repeat every week. What you pay for is the layer on top that lets people who do not write SQL get at those tables. Screens, filters, dashboards, forms.
+A farm's stock book, treatment register and paddock history are durable records. Keeping them in a database you own lets an operator ask a question that crosses several registers without waiting for a new report screen.
 
-That layer used to be the whole product, because talking to a database was hard. It is not hard any more. Open this folder in Claude Code, describe what you want, and it writes the query, runs it, and explains the answer. Ask a question the dashboard never had a chart for and you still get an answer.
+This free version is a farm office workflow. It runs locally with embedded PGlite, or against a shared PostgreSQL database. Claude Code, Codex, OpenCode or Cursor reads the same commands. The database is the record, the agent is the door. Local CLI queries work without a network connection once dependencies are installed. Hosted agent conversations can still need connectivity.
 
-## What you gain
+## What a screen gives you
 
-- **Better answers.** A dashboard shows what the vendor decided to chart. Here you ask your own question, in your own words, and get it answered against your own data.
-- **No seats.** Everyone who needs to look can look. The bill does not grow with headcount.
-- **Your data in your Postgres.** Plain tables. Back them up, query them from anything, leave any time. There is no export step because there is nothing to leave.
-- **A process that matches you.** When your way of working changes, you add a command. You do not wait for a feature request to clear.
+AgriWebb includes farm maps and phone workflows. This build has no mobile capture, offline phone synchronisation, drag-and-drop map, GPS boundary editor, hardware pairing, satellite feed, background integration or live multiuser presence. Read-only HTML dashboards are snapshots, not a web application. A farm that needs those capabilities in the paddock needs that work scoped before switching.
 
-## What you give up
+Individual identifiers can be recorded, but management events here are mob-level. There is no mob split or merge and no individual sale workflow. A mob sale with individual records is held for reconciliation. Never substitute a mob average for an individual weight.
 
-- **A visual board.** Stages are a table you ask about, not cards you drag.
-- **A phone app.** It runs where Claude Code runs.
-- **A vendor help desk.** This is open source. Enterprise DNA supports the installed version for businesses that want someone to call.
+## What ownership adds
 
-## Who this fits
+Change the farm's review thresholds, join the records in new ways, keep original exports, and add a field with a migration. Back up the database and original documents. Shared PostgreSQL requires hosting, access control and backup decisions. This base has no application roles or tenant isolation. Give access only to trusted operators of the same business.
 
-Small teams who already use Claude Code, or who would rather learn to ask than learn another interface. If your team needs a screen to look at all day, keep AgriWebb. If you need the answers more than the screens, this is cheaper, faster and yours.
-
-Installed and run for you: https://enterprisedna.co/omni/instead-of/agriwebb
+Enterprise DNA can build the required phone or web experience, connect equipment, or use a different stack as part of a scoped custom version. Installation and operation are available through Omni by Enterprise DNA, with a setup fee and then a retainer.
